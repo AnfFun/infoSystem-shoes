@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\Shoe;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -37,6 +39,19 @@ class ShoeRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+    public function createShoe(EntityManagerInterface $entityManager, $title,$desc,$price,$size,$image = NULL,$order = NULL){
+        $shoe = new Shoe();
+        $shoe->setTitle($title);
+        $shoe->setdescription($desc);
+        $shoe->setPrice($price);
+        $shoe->setsize($size);
+        $shoe->setImage($image);
+        $shoe->setOrders($order);
+        $entityManager->persist($shoe);
+        $entityManager->flush($shoe);
+
+
     }
 
 //    /**
