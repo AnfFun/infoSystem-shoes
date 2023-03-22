@@ -11,11 +11,17 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends AbstractController
 {
-    #[Route('/')]
-    public function homepage(EntityManagerInterface $entityManager,ShoeRepository $shoeRepository): Response
+    public function debug($data){
+        echo '<pre>' . print_r($data) . '</pre>';
+    }
+    #[Route('/',name: 'Home')]
+    public function homepage(EntityManagerInterface $entityManager, ShoeRepository $shoeRepository): Response
     {
-//        $shoeRepository->createShoe($entityManager,'Берци Wolf','Дуже круті берци, прям класні','2800','45');
-
-        return $this->render('main.html.twig');
+//        $shoeRepository->createShoe($entityManager,'Salomon','Взуття Speedcross 5 W 416098 20 V0 Wrought Iron/Spray/White','4960','45');
+        $result = $shoeRepository->findAll();
+//        $this->debug($result);
+        return $this->render('main.html.twig',[
+            'shoes' => $result,
+        ]);
     }
 }

@@ -14,23 +14,84 @@
 <style>
     body {
         background: rgb(65, 64, 64);
-    }
-    .title{
         font-family: 'Josefin Sans', sans-serif;
     }
-    .about{
+
+    .title {
+        font-family: 'Josefin Sans', sans-serif;
+    }
+
+    .Goods {
         font-family: 'Josefin Sans', sans-serif;
         text-transform: uppercase;
         font-weight: bolder;
         border-bottom: aliceblue 2px solid;
         color: aliceblue;
-    ;
+        font-size: 24px;
+        display: flex;
     }
+
+    .shop {
+        display: flex;
+        flex-wrap: wrap;
+        /*justify-content: center;*/
+        color: aliceblue;
+    }
+
+    .shop-item {
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid aliceblue;
+        width: 415px;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .shop-item img {
+        width: 415px;
+        height: 300px;
+        margin-bottom: 10px;
+        color: aliceblue;
+
+    }
+
+    .shop-item:hover {
+        transform: scale(1.05);
+    }
+
+    .shop-item p {
+        margin: 0;
+        word-wrap: break-word;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        font-size: 20px;
+    }
+
 
 </style>
 
-<h1 class="title" style="text-align: center;color: aliceblue;text-transform: uppercase">Man Club</h1>
-<span class="about">Our goods</span>
+<h1 class="title" style="text-align: center;color: aliceblue;text-transform: uppercase">COOL SHOP</h1>
+<div>
+<div class="Goods">Our goods</div>
+<div></div>
+</div>
 
+<div class="shop">
+    {% for item in shoes %}
+        <div class="shop-item">
+            <img src="{{ item.image }}" alt="shoes-image">
+            <ul>
+                <li><p>Title: {{ item.title }} </p></li>
+                <li><p>Description: {{ item.description }} </p></li>
+                <li><p>Size: {{ item.size }}</p></li>   
+                <li><p>Price: {{ item.price }} UAH </p></li>
+            </ul>
+        </div>
+    {% endfor %}
+</div>
 </body>
 </html>
