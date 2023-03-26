@@ -50,7 +50,7 @@ class ShopItemRepository extends ServiceEntityRepository
         $entityManager->persist($shoe);
         $entityManager->flush();
     }
-
+dwd
 
 //    /**
 //     * @return ShopItem[] Returns an array of ShopItem objects
