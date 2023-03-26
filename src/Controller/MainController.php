@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Shoe;
+use App\Repository\CustomerRepository;
 use App\Repository\ShoeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,13 +16,11 @@ class MainController extends AbstractController
         echo '<pre>' . print_r($data) . '</pre>';
     }
     #[Route('/',name: 'Home')]
-    public function homepage(EntityManagerInterface $entityManager, ShoeRepository $shoeRepository): Response
+    public function homepage(EntityManagerInterface $entityManager): Response
     {
-//        $shoeRepository->createShoe($entityManager,'Salomon','Взуття Speedcross 5 W 416098 20 V0 Wrought Iron/Spray/White','4960','45');
-        $result = $shoeRepository->findAll();
 //        $this->debug($result);
         return $this->render('main.html.twig',[
-            'shoes' => $result,
+//            'shoes' => $result,
         ]);
     }
 }
