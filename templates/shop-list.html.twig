@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Взувайка</title>
+    <style>
+        body {
+            background: rgb(65, 64, 64);
+            font-family: 'Josefin Sans', sans-serif;
+        }
+
+        .title {
+            font-family: 'Josefin Sans', sans-serif;
+            margin-top: 10px;
+        }
+
+        .Goods {
+            font-family: 'Josefin Sans', sans-serif;
+            text-transform: uppercase;
+            font-weight: bolder;
+            border-bottom: aliceblue 2px solid;
+            color: aliceblue;
+            font-size: 24px;
+            display: flex;
+        }
+
+        .shop {
+            display: flex;
+            flex-wrap: wrap;
+            /*justify-content: center;*/
+            color: aliceblue;
+        }
+
+        .shop-item {
+            display: flex;
+            flex-direction: column;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid aliceblue;
+            width: 415px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .shop-item img {
+            width: 415px;
+            height: 300px;
+            margin-bottom: 10px;
+            color: aliceblue;
+
+        }
+
+        .shop-item:hover {
+            transform: scale(1.05);
+        }
+
+        .shop-item p {
+            margin: 0;
+            word-wrap: break-word;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            font-size: 20px;
+        }
+    .item-but{
+        width: 100%;
+    }
+
+    </style>
+</head>
+<body>
+
+<h1 class="title" style="text-align: center;color: aliceblue;text-transform: uppercase">COOL SHOP</h1>
+<div>
+    <div class="Goods">Our goods</div>
+    <div></div>
+</div>
+
+<div class="shop">
+    {% for item in shoes %}
+
+
+        <div class="shop-item">
+            <img src="" alt="shoes-image">
+            <ul>
+                <li><p>Title:{{ item.title}} </p></li>
+                <li><p>Description:{{ item.description}} </p></li>
+                <li><p>Price: {{ item.price}} UAH </p></li>
+            </ul>
+            <a  href="{{ path('shopItem',{'id':item.id}) }}"><button class="item-but">BUY</button></a>
+        </div>
+    {% endfor %}
+</div>
+</body>
+</html>

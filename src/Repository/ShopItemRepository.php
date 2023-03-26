@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\ShopItem;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -38,6 +40,17 @@ class ShopItemRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    public function itemCreate(EntityManagerInterface $entityManager, $title,$price,$description)
+    {
+        $shoe = new ShopItem();
+        $shoe->setTitle($title);
+        $shoe->setDescription($description);
+        $shoe->setPrice($price);
+        $entityManager->persist($shoe);
+        $entityManager->flush();
+    }
+
 
 //    /**
 //     * @return ShopItem[] Returns an array of ShopItem objects

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Взувайка</title>
+    <style>
+        body {
+            background: rgb(65, 64, 64);
+            font-family: 'Josefin Sans', sans-serif;
+
+        }
+
+        .title {
+            font-family: 'Josefin Sans', sans-serif;
+            margin-top: 10px;
+        }
+
+        .inside-item {
+            font-size: 22px;
+            color: aliceblue;
+            padding: 20px;
+        }
+
+        .inside-title {
+            font-weight: bold;
+            font-size: 62px;
+            text-align: center;
+            border-bottom: 2px solid;
+        }
+
+        .inside-description {
+            border:2px solid;
+            padding:10px;
+
+        }
+    </style>
+</head>
+<body>
+<h1 class="title" style="text-align: center;color: aliceblue;text-transform: uppercase">COOL SHOP</h1>
+<div class="inside-item">
+    <p class="inside-title">{{ title }}</p>
+    <p class="inside-description">{{ description }}</p>
+    <p>Price: {{ price }} UAH</p>
+    <a href="#">
+        <button>BUY</button>
+    </a>
+
+</div>
+</body>
+</html>
