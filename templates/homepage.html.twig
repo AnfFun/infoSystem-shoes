@@ -13,90 +13,67 @@
     <title>Взувайка</title>
 
     <style>
+        /* styles for the body */
         body {
-            background: rgb(65, 64, 64);
-            font-family: 'Josefin Sans', sans-serif;
-            color: aliceblue;
-        }
-
-        .title {
-            font-family: 'Josefin Sans', sans-serif;
-            margin-top: 10px;
-        }
-
-        .Goods {
-            font-family: 'Josefin Sans', sans-serif;
-            text-transform: uppercase;
-            font-weight: bolder;
-            border-bottom: aliceblue 2px solid;
-            color: aliceblue;
-            font-size: 24px;
-            display: flex;
-        }
-
-        .goodsHome a {
-            font-family: 'Josefin Sans', sans-serif;
-            text-transform: uppercase;
-            font-weight: bolder;
-            border-bottom: aliceblue 2px solid;
-            color: aliceblue;
-            font-size: 24px;
-            display: flex;
-            justify-content: center;
-            text-decoration: none;
-            margin-top: 40px;
-        }
-
-        .shop {
-            display: flex;
-            flex-wrap: wrap;
-            /*justify-content: center;*/
-            color: aliceblue;
-        }
-
-        .shop-item {
-            display: flex;
-            flex-direction: column;
-            margin: 10px;
-            padding: 10px;
-            border: 1px solid aliceblue;
-            width: 415px;
-            transition: transform 0.2s ease-in-out;
-        }
-
-        .shop-item img {
-            width: 415px;
-            height: 300px;
-            margin-bottom: 10px;
-            color: aliceblue;
-
-        }
-
-        .shop-item:hover {
-            transform: scale(1.05);
-        }
-
-        .shop-item p {
+            font-family: Arial, sans-serif;
             margin: 0;
-            word-wrap: break-word;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            font-size: 20px;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+            font-size: 16px;
         }
-        .desc{
-            margin: auto;
+        /* styles for the title */
+        .title {
+            text-align: center;
+            color: #fff;
+            background-color: #333;
+            text-transform: uppercase;
+            padding: 20px;
+            margin: 0;
         }
-
-
+        /* styles for the goodsHome aside */
+        .goodsHome {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .goodsHome a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        .goodsHome a:hover {
+            color: #ff4500;
+        }
+        /* styles for the description */
+        .desc {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            line-height: 1.5;
+        }
+        .desc a {
+            text-decoration: none;
+            color: #ff4500;
+            font-weight: bold;
+        }
+        .desc a:hover {
+            text-decoration: underline;
+        }
+        .padcart {
+            padding-left: 91.5%;
+        }
     </style>
 </head>
 <body>
 <h1 class="title" style="text-align: center;color: aliceblue;text-transform: uppercase">COOL SHOP</h1>
 <aside class="goodsHome">
     <a href="/shop/list">Goods list</a>
+    <a class="padcart" href="/cart">Cart</a>
 
 </aside>
 

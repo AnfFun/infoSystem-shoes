@@ -12,75 +12,91 @@
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <title>Взувайка</title>
     <style>
-        body {
-            background: rgb(65, 64, 64);
-            font-family: 'Josefin Sans', sans-serif;
-
-        }
-
-        .title {
-            font-family: 'Josefin Sans', sans-serif;
-            margin-top: 10px;
-        }
-
-        .inside-item {
-            font-size: 22px;
-            color: aliceblue;
-            padding: 20px;
-        }
-
-        .inside-title {
-            font-weight: bold;
-            font-size: 62px;
-            text-align: center;
-            border-bottom: 2px solid;
-        }
-
-        .inside-description {
-            border:2px solid;
-            padding:10px;
-
-        }
+.cart2 {
+    margin-left: 20px;
+}
     </style>
 </head>
 
 
-<body>
-    <h1 class="title" style="text-align: center;color: aliceblue;text-transform: uppercase">COOL SHOP</h1>
-    <aside class="goodsHome">
-        <a href="/shop/list">Goods list</a>
-    </aside>
+{#<body>#}
+{#    <h1 class="title" style="text-align: center;color: aliceblue;text-transform: uppercase">COOL SHOP</h1>#}
+{#    <aside class="goodsHome">#}
+{#        <a href="/shop/list">Goods list</a>#}
+{#    </aside>#}
 
-    {% if cartItems is empty %}
-        <p>Your cart is empty.</p>
-    {% else %}
-        <table>
-            <thead>
-            <tr>
-                <th>Item</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Subtotal</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for item in cartItems %}
-                <tr>
-                    <td>{{ item.item.title }}</td>
-                    <td>{{ item.item.price }}</td>
-{#                    <td>{{ item.quantity }}</td>#}
-{#                    <td>{{ item.item.price * item.quantity }}</td>#}
-                </tr>
-            {% endfor %}
-            <tr>
-                <td colspan="3">Total:</td>
-{#                <td>{{ cartTotal(cartItems) }}</td>#}
-            </tr>
-            </tbody>
-        </table>
-
-    {% endif %}
-</body>
+{#    {% if cartItems is empty %}#}
+{#        <p>Your cart is empty.</p>#}
+{#    {% else %}#}
+{#        <div class="row justify-content-center">#}
+{#            <div class="col-md-8">#}
+{#                {% for item in cartItems %}#}
+{#                    <div class="card mb-3">#}
+{#                        <div class="row g-0">#}
+{#                            <div class="col-md-4">#}
+{#                            </div>#}
+{#                            <div class="col-md-8">#}
+{#                                <div class="card-body">#}
+{#                                    <h5 class="card-title">{{ item.item.title }}</h5>#}
+{#                                    <p class="card-text">Price: {{ item.item.price }}</p>#}
+{#                                    <p class="card-text">Item Total: {{ item.itemTotal }}</p>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                {% endfor %}#}
+{#            </div>#}
+{#        </div>#}
+{#    {% endif %}#}
+{#</body>#}
+{% block body %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="title">Your Cart</h1>
+                <div class="d-flex cart1">
+                <form action="{{ path('clear_cart') }}" method="POST">
+                    <button class="btn btn-danger mt-3">Clear Cart</button>
+                </form>
+                    <button class="btn btn-success mt-3 cart2" onclick="window.location.href='/'">Back</button>
+                </div>
+                <hr>
+                {% if cartItems is empty %}
+                    <p>Your cart is empty.</p>
+                {% else %}
+                    <div class="row">
+                        <div class="col-md-8">
+                            {% for cartItem in cartItems %}
+                                <div class="row mb-3">
+                                    <div class="col-md-4" style=" ">
+                                         <img style="box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);" src="{{ item.image }}" class="img-fluid" width="300" height="200">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h3>{{ cartItem.item.getTitle() }}</h3>
+                                        <p style="margin-bottom: 25px; display: -webkit-box; -webkit-box-orient: vertical;  overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 2; ">{{ cartItem.item.getDescription() }}</p>
+                                        <p style="margin-bottom: 5px;">Price: {{ cartItem.item.getPrice() }} UAH</p>
+                                        <p><b>Total: {{ cartItem.itemTotal }} UAH</b></p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-4">
+                            <h3>Cart Summary</h3>
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <td>Total:</td>
+                                    <td><b>{{ cartTotal }} UAH</b></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
 </html>
 
 
