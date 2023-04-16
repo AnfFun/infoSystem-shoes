@@ -13,91 +13,103 @@
     <title>Взувайка</title>
     <style>
         body {
-            background: rgb(65, 64, 64);
-            font-family: 'Josefin Sans', sans-serif;
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
         }
 
-        .title {
-            font-family: 'Josefin Sans', sans-serif;
-            margin-top: 10px;
+        h1.title {
+            font-size: 3em;
+            text-align: center;
+            color: aliceblue;
+            text-transform: uppercase;
+            margin: 0;
+            padding: 1em 0;
+            background-color: #333;
         }
 
         .Goods {
-            font-family: 'Josefin Sans', sans-serif;
-            text-transform: uppercase;
-            font-weight: bolder;
-            border-bottom: aliceblue 2px solid;
-            color: aliceblue;
-            font-size: 24px;
-            display: flex;
+            font-size: 2em;
+            font-weight: bold;
+            text-align: center;
+            margin: 1em 0;
         }
 
         .shop {
             display: flex;
             flex-wrap: wrap;
-            /*justify-content: center;*/
-            color: aliceblue;
+            justify-content: space-between;
+            padding: 0 1em;
         }
 
         .shop-item {
-            display: flex;
-            flex-direction: column;
-            margin: 10px;
-            padding: 10px;
-            border: 1px solid aliceblue;
-            width: 415px;
-            transition: transform 0.2s ease-in-out;
+            width: 30%;
+            margin: 1em 0;
+            background-color: white;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .shop-item a {
+            text-decoration: none;
         }
 
         .shop-item img {
-            width: 415px;
-            height: 300px;
-            margin-bottom: 10px;
-            color: aliceblue;
-
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
         }
 
-        .shop-item:hover {
-            transform: scale(1.05);
+        .shop-item ul {
+            list-style: none;
+            margin: 1em;
+            padding: 0;
         }
 
-        .shop-item p {
+        .shop-item ul li p {
             margin: 0;
-            word-wrap: break-word;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            font-size: 20px;
+            padding: 0;
         }
-    .item-but{
-        width: 100%;
-    }
 
+
+        .item-but {
+            display: block;
+            width: 100%;
+            padding: 1em 0;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .item-but:hover {
+            background-color: #4CAF50;
+        }
     </style>
 </head>
 <body>
 
 <h1 class="title" style="text-align: center;color: aliceblue;text-transform: uppercase">COOL SHOP</h1>
-<div>
+
     <div class="Goods">Our goods</div>
     <div></div>
 </div>
 
 <div class="shop">
     {% for item in shoes %}
-
-
-        <div class="shop-item">
-            <img src="" alt="shoes-image">
+        <div  class="shop-item">
+            <img src="{{ item.image }}" alt="shoes-image">
             <ul>
-                <li><p>Title:{{ item.title}} </p></li>
-                <li><p>Description:{{ item.description}} </p></li>
-                <li><p>Price: {{ item.price}} UAH </p></li>
+                <li><p style="margin-bottom: 20px; font-weight: bold">{{ item.title }} </p></li>
+                <li><p style="margin-bottom: 25px; display: -webkit-box; -webkit-box-orient: vertical;  overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 3; ">{{ item.description | slice(0, 300) }} </p></li>
+                <li><p style=" font-weight: bold;">Price: {{ item.price }} UAH </p></li>
+
             </ul>
-            <a  href="{{ path('shopItem',{'id':item.id}) }}"><button class="item-but">BUY</button></a>
+            <a  href="{{ path('shop_item', {'id': item.id}) }}">
+                <button class="item-but">BUY</button>
+            </a>
         </div>
+
     {% endfor %}
 </div>
 </body>
