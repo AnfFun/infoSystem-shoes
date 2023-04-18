@@ -10,59 +10,70 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <title>Взувайка</title>
+    <title>SOLESAVVY</title>
     <style>
-.cart2 {
-    margin-left: 20px;
-}
-.img-fluid {
-    height: 200px;
-    width: 300px;
-}
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+            font-size: 16px;
+            font-weight: bolder;
+        }
+
+        .cart2 {
+            margin-left: 20px;
+        }
+
+        .img-fluid {
+            height: 200px;
+            width: 300px;
+        }
     </style>
 </head>
 
 
-{#<body>#}
-{#    <h1 class="title" style="text-align: center;color: aliceblue;text-transform: uppercase">COOL SHOP</h1>#}
-{#    <aside class="goodsHome">#}
-{#        <a href="/shop/list">Goods list</a>#}
-{#    </aside>#}
+{# <body> #}
+{#    <h1 class="title" style="text-align: center;color: aliceblue;text-transform: uppercase">COOL SHOP</h1> #}
+{#    <aside class="goodsHome"> #}
+{#        <a href="/shop/list">Goods list</a> #}
+{#    </aside> #}
 
-{#    {% if cartItems is empty %}#}
-{#        <p>Your cart is empty.</p>#}
-{#    {% else %}#}
-{#        <div class="row justify-content-center">#}
-{#            <div class="col-md-8">#}
-{#                {% for item in cartItems %}#}
-{#                    <div class="card mb-3">#}
-{#                        <div class="row g-0">#}
-{#                            <div class="col-md-4">#}
-{#                            </div>#}
-{#                            <div class="col-md-8">#}
-{#                                <div class="card-body">#}
-{#                                    <h5 class="card-title">{{ item.item.title }}</h5>#}
-{#                                    <p class="card-text">Price: {{ item.item.price }}</p>#}
-{#                                    <p class="card-text">Item Total: {{ item.itemTotal }}</p>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                {% endfor %}#}
-{#            </div>#}
-{#        </div>#}
-{#    {% endif %}#}
-{#</body>#}
+{#    {% if cartItems is empty %} #}
+{#        <p>Your cart is empty.</p> #}
+{#    {% else %} #}
+{#        <div class="row justify-content-center"> #}
+{#            <div class="col-md-8"> #}
+{#                {% for item in cartItems %} #}
+{#                    <div class="card mb-3"> #}
+{#                        <div class="row g-0"> #}
+{#                            <div class="col-md-4"> #}
+{#                            </div> #}
+{#                            <div class="col-md-8"> #}
+{#                                <div class="card-body"> #}
+{#                                    <h5 class="card-title">{{ item.item.title }}</h5> #}
+{#                                    <p class="card-text">Price: {{ item.item.price }}</p> #}
+{#                                    <p class="card-text">Item Total: {{ item.itemTotal }}</p> #}
+{#                                </div> #}
+{#                            </div> #}
+{#                        </div> #}
+{#                    </div> #}
+{#                {% endfor %} #}
+{#            </div> #}
+{#        </div> #}
+{#    {% endif %} #}
+{# </body> #}
 {% block body %}
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
                 <h1 class="title">Your Cart</h1>
                 <div class="d-flex cart1">
-                <form action="{{ path('clear_cart') }}" method="POST">
-                    <button class="btn btn-danger mt-3">Clear Cart</button>
-                </form>
-                    <button class="btn btn-success mt-3 cart2" onclick="window.location.href='/'">Back</button>
+                    <form action="{{ path('clear_cart') }}" method="POST">
+                        <button class="btn btn-danger mt-3">Clear Cart</button>
+                    </form>
+                    <button class="btn btn-success mt-3 cart2" onclick="window.location.href='/shop/list'">Back</button>
                 </div>
                 <hr>
                 {% if cartItems is empty %}
@@ -73,13 +84,14 @@
                             {% for cartItem in cartItems %}
                                 <div class="row mb-3">
                                     <div class="col-md-4" style=" ">
-                                         <img style="box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); " src="{{ cartItem.item.image }}" class="img-fluid">
+                                        <img style="box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); "
+                                             src="{{ cartItem.item.image }}" class="img-fluid">
                                     </div>
                                     <div class="col-md-8">
                                         <h3>{{ cartItem.item.getTitle() }}</h3>
                                         <p style="margin-bottom: 25px; display: -webkit-box; -webkit-box-orient: vertical;  overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 2; ">{{ cartItem.item.getDescription() }}</p>
-                                        <p style="margin-bottom: 5px;">Price: {{ cartItem.item.getPrice() }} UAH</p>
-                                        <p><b>Total: {{ cartItem.itemTotal }} UAH</b></p>
+                                        <p style="margin-bottom: 5px;">Price per one : {{ cartItem.item.getPrice() }} UAH</p>
+                                        <p><b>Price for all : {{ cartItem.itemTotal }} UAH</b></p>
                                     </div>
                                 </div>
                             {% endfor %}

@@ -25,8 +25,8 @@ class ShopItem
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\OneToMany(mappedBy: 'shopItem', targetEntity: ShopCart::class, orphanRemoval: true)]
-    private Collection $shopCarts;
+//    #[ORM\OneToMany(mappedBy: 'shopItem', targetEntity: ShopCart::class, orphanRemoval: true)]
+//    private Collection $shopCarts;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
@@ -77,35 +77,6 @@ class ShopItem
         return $this;
     }
 
-    /**
-     * @return Collection<int, ShopCart>
-     */
-    public function getShopCarts(): Collection
-    {
-        return $this->shopCarts;
-    }
-
-    public function addShopCart(ShopCart $shopCart): self
-    {
-        if (!$this->shopCarts->contains($shopCart)) {
-            $this->shopCarts->add($shopCart);
-            $shopCart->setShopItem($this);
-        }
-
-        return $this;
-    }
-
-    public function removeShopCart(ShopCart $shopCart): self
-    {
-        if ($this->shopCarts->removeElement($shopCart)) {
-            // set the owning side to null (unless already changed)
-            if ($shopCart->getShopItem() === $this) {
-                $shopCart->setShopItem(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getImage(): ?string
     {
